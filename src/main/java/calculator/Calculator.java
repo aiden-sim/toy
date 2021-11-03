@@ -3,22 +3,28 @@ package calculator;
 public class Calculator {
     public static int calculate(String text) {
         String[] values = text.split(" ");
-        int first = Integer.parseInt(values[0]);
-        int second = Integer.parseInt(values[2]);
+        Operand first = new Operand(values[0]);
+        Operand second = new Operand(values[2]);
         String operator = values[1];
 
         return calculate(first, second, operator);
     }
 
-    private static int calculate(int first, int second, String operator) {
+    private static int calculate(Operand first, Operand second, String operator) {
         if (operator.equals("+")) {
-            return first + second;
-        } else if (operator.equals("-")) {
-            return first - second;
-        } else if (operator.equals("*")) {
-            return first * second;
-        } else if (operator.equals("/")) {
-            return first / second;
+            return first.plus(second);
+        }
+
+        if (operator.equals("-")) {
+            return first.minus(second);
+        }
+
+        if (operator.equals("*")) {
+            return first.multiply(second);
+        }
+
+        if (operator.equals("/")) {
+            return first.divide(second);
         }
 
         throw new IllegalArgumentException("사칙 연산이 올바르지 않습니다.");
