@@ -7,17 +7,16 @@ public class Calculator {
         int second = Integer.parseInt(values[2]);
         String operator = values[1];
 
-        int result = 0;
         if (operator.equals("+")) {
-            result = first + second;
+            return first + second;
         } else if (operator.equals("-")) {
-            result = first - second;
+            return first - second;
         } else if (operator.equals("*")) {
-            result = first * second;
+            return first * second;
         } else if (operator.equals("/")) {
-            result = first / second;
+            return first / second;
         }
 
-        return result;
+        throw new IllegalArgumentException("사칙 연산이 올바르지 않습니다.");
     }
 }
