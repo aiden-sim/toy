@@ -7,6 +7,10 @@ public class Calculator {
         int second = Integer.parseInt(values[2]);
         String operator = values[1];
 
+        return calculate(first, second, operator);
+    }
+
+    private static int calculate(int first, int second, String operator) {
         if (operator.equals("+")) {
             return first + second;
         } else if (operator.equals("-")) {
